@@ -1,0 +1,14 @@
+{
+	"version" : "0.1.0",
+	"name" : "jparser-primitive",
+	"description" : "Simple numeric literal parsing",
+	"homepage" : "https://github.com/TeamworkGuy2/JParserPrimitive",
+	"license" : "MIT",
+	"main" : "./bin/jparser_primitive.jar",
+	"dependencies" : {
+		"jarray-util": "*",
+		"jfunc": "*",
+		"jtext-parser": "*",
+		"jtext-util": "*"
+	}
+}
