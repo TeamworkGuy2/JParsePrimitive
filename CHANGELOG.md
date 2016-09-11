@@ -4,7 +4,13 @@ This project does its best to adhere to [Semantic Versioning](http://semver.org/
 
 
 --------
-###[0.1.1](N/A) - 2016-09-02
+###[0.1.2](N/A) - 2016-09-10
+#### Changed
+* NumericParser performance adjustments to see if we see downstream improvements in jparser-code
+
+
+--------
+###[0.1.1](https://github.com/TeamworkGuy2/JParsePrimitive/commit/4efa8373c385dc9eee922f1bf3a0007e3caeb146) - 2016-09-02
 #### Changed
 * Renamed project from JParserPrimitive -> JParsePrimitive
 

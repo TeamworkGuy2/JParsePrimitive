@@ -66,11 +66,11 @@ public class NumericParser implements CharParserMatchable {
 	protected static final char[] floatExponentIndicator = { 'e', 'E' };
 	protected static final char[] binaryExponentIndicator = { 'p', 'P' };
 
-	protected static final char[] allowedChars = { '_' };
-	protected static final char[] allowedHexChars = { '_' };
-	protected static final char[] allowedDigitChars = { '_' };
-	protected static final char[] allowedOctalChars = { '_' };
-	protected static final char[] allowedBinaryChars = { '_' };
+	protected static final char allowedChar = '_';
+	protected static final char allowedHexChar = '_';
+	protected static final char allowedDigitChar = '_' ;
+	protected static final char allowedOctalChar = '_';
+	protected static final char allowedBinaryChar = '_';
 
 
 	public static final char floatPointChar = '.';
@@ -83,18 +83,18 @@ public class NumericParser implements CharParserMatchable {
 	public static final Predicates.Char isIntSuffix = (c) -> (c == 'L' || c == 'l');
 
 	public static final Predicates.Char isHex = (c) -> (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
-	public static final Predicates.Char isHexOrOptionalChar = (c) -> (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f') || ArrayUtil.indexOf(allowedHexChars, c) != -1;
+	public static final Predicates.Char isHexOrOptionalChar = (c) -> (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f') || c == allowedHexChar;
 	public static final Predicates.Char isHexPrefix = (c) -> (c == 'X' || c == 'x');
 
 	public static final Predicates.Char isDigit = (c) -> (c >= '0' && c <= '9');
-	public static final Predicates.Char isDigitOrOptionalChar = (c) -> (c >= '0' && c <= '9') || ArrayUtil.indexOf(allowedDigitChars, c) != -1;
+	public static final Predicates.Char isDigitOrOptionalChar = (c) -> (c >= '0' && c <= '9') || c == allowedDigitChar;
 
 	public static final Predicates.Char isOctal = ((c) -> (c >= '0' && c <= '7'));
-	public static final Predicates.Char isOctalOrOptionalChar = ((c) -> (c >= '0' && c <= '7') || ArrayUtil.indexOf(allowedOctalChars, c) != -1);
+	public static final Predicates.Char isOctalOrOptionalChar = ((c) -> (c >= '0' && c <= '7') || c == allowedOctalChar);
 	public static final Predicates.Char isOctalPrefix = (c) -> (c == 'C' || c == 'c');
 
 	public static final Predicates.Char isBinary = (c) -> (c == '0' || c == '1');
-	public static final Predicates.Char isBinaryOrOptionalChar = (c) -> (c == '0' || c == '1') || ArrayUtil.indexOf(allowedBinaryChars, c) != -1;
+	public static final Predicates.Char isBinaryOrOptionalChar = (c) -> (c == '0' || c == '1') || c == allowedBinaryChar;
 	public static final Predicates.Char isBinaryPrefix = (c) -> (c == 'B' || c == 'b');
 
 	protected static final char[] suffixes = { 'X', 'x', 'C', 'c', 'B', 'b' };
@@ -109,7 +109,8 @@ public class NumericParser implements CharParserMatchable {
 	protected static final char firstBinary = '0';
 	protected static final char lastBinary = '1';
 
-	protected static final char[] validFirstChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+	protected static final char firstValidChar = '0';
+	protected static final char lastValidChar = '9';
 
 	protected boolean parseSign;
 	/** optimistic flag indicating whether enough characters have been parsed to form a valid numeric value */
@@ -129,7 +130,7 @@ public class NumericParser implements CharParserMatchable {
 	StringBuilder dstBuf = new StringBuilder();
 	TextFragmentRef.ImplMut coords = new TextFragmentRef.ImplMut();
 	BiPredicates.CharObject<TextParser> firstCharMatcher = (char ch, TextParser buf) -> {
-		return ArrayUtil.indexOf(validFirstChars, ch) > -1;
+		return ch >= firstValidChar && ch <= lastValidChar;
 	};
 	String name;
 
