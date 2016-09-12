@@ -3,7 +3,7 @@ package twg2.parser.primitive.test;
 import org.junit.Test;
 
 import twg2.parser.primitive.ParseInt;
-import twg2.parser.textParser.TextParserImpl;
+import twg2.parser.textParser.TextIteratorParser;
 import checks.CheckTask;
 
 /**
@@ -19,7 +19,7 @@ public class ParseNumberTest {
 
 		CheckTask.assertTests(strs, expect, (s, n) -> {
 			try {
-				return ParseInt.readInt(TextParserImpl.of(s), true, 10);
+				return ParseInt.readInt(TextIteratorParser.of(s), true, 10);
 			} catch(Exception e) {
 				throw new RuntimeException((n + 1) + ". " + s, e);
 			}

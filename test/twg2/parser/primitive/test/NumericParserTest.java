@@ -9,8 +9,8 @@ import org.junit.Test;
 import twg2.arrays.ArrayUtil;
 import twg2.parser.primitive.NumericParser;
 import twg2.parser.primitive.NumericParser.NumericType;
+import twg2.parser.textParser.TextIteratorParser;
 import twg2.parser.textParser.TextParser;
-import twg2.parser.textParser.TextParserImpl;
 import twg2.text.stringUtils.StringTrim;
 
 /**
@@ -99,7 +99,7 @@ public class NumericParserTest {
 
 		NumericParser n = new NumericParser(parseSign);
 		for(int i = 0, size = srcs.length; i < size; i++) {
-			TextParser buf = TextParserImpl.of(srcs[i]);
+			TextParser buf = TextIteratorParser.of(srcs[i]);
 
 			while(buf.hasNext()) {
 				char ch = buf.nextChar();

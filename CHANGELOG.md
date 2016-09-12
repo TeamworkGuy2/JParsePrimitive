@@ -4,7 +4,13 @@ This project does its best to adhere to [Semantic Versioning](http://semver.org/
 
 
 --------
-###[0.1.2](N/A) - 2016-09-10
+###[0.1.3](N/A) - 2016-09-11
+#### Changed
+* Updated jtext-parser dependency to latest 0.9.0 version (TextParserImpl -> TextIteratorParser)
+
+
+--------
+###[0.1.2](https://github.com/TeamworkGuy2/JParsePrimitive/commit/f4fafc577b7c9f3d117bb50ae1ea90f06d55c543) - 2016-09-10
 #### Changed
 * NumericParser performance adjustments to see if we see downstream improvements in jparser-code
 
