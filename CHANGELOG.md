@@ -4,7 +4,14 @@ This project does its best to adhere to [Semantic Versioning](http://semver.org/
 
 
 --------
-###[0.1.3](N/A) - 2016-09-11
+###[0.1.4](N/A) - 2016-10-27
+#### Changed
+* Switched/updated jarray-util -> jarrays dependency
+* Updated unit tests
+
+
+--------
+###[0.1.3](https://github.com/TeamworkGuy2/JParsePrimitive/commit/2b72e70ba474b922d6812f373eada5afa5b1a6ae) - 2016-09-11
 #### Changed
 * Updated jtext-parser dependency to latest 0.9.0 version (TextParserImpl -> TextIteratorParser)
 

@@ -1,6 +1,6 @@
 JParsePrimitive
 ==============
-version: 0.1.3
+version: 0.1.4
 
 * twg2.parser.primitive:
   * NumericParser - for parsing Java Language Specification (JLS) numeric literals (binary, octal, decimal, hex, float, and hex-float) from text input streams
