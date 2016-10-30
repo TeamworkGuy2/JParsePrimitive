@@ -4,7 +4,14 @@ This project does its best to adhere to [Semantic Versioning](http://semver.org/
 
 
 --------
-###[0.1.4](N/A) - 2016-10-27
+###[0.1.5](N/A) - 2016-10-30
+#### Changed
+* Updated to latest jtext-parser version 0.10.0 (TextFragmentRef.ImplMut -> TextFragmentRefImplMut)
+* Added some example code to README
+
+
+--------
+###[0.1.4](https://github.com/TeamworkGuy2/JParsePrimitive/commit/d8137c07484afb4bc63b7713ba18a8c4334a7360) - 2016-10-27
 #### Changed
 * Switched/updated jarray-util -> jarrays dependency
 * Updated unit tests

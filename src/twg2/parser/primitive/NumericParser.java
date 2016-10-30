@@ -5,6 +5,7 @@ import twg2.functions.BiPredicates;
 import twg2.functions.Predicates;
 import twg2.parser.condition.text.CharParserMatchable;
 import twg2.parser.textFragment.TextFragmentRef;
+import twg2.parser.textFragment.TextFragmentRefImplMut;
 import twg2.parser.textParser.TextParser;
 
 /**
@@ -128,7 +129,7 @@ public class NumericParser implements CharParserMatchable {
 
 	char sign;
 	StringBuilder dstBuf = new StringBuilder();
-	TextFragmentRef.ImplMut coords = new TextFragmentRef.ImplMut();
+	TextFragmentRefImplMut coords = new TextFragmentRefImplMut();
 	BiPredicates.CharObject<TextParser> firstCharMatcher = (char ch, TextParser buf) -> {
 		return ch >= firstValidChar && ch <= lastValidChar;
 	};
@@ -273,7 +274,7 @@ public class NumericParser implements CharParserMatchable {
 		lastChar = 0;
 		sign = 0;
 		dstBuf.setLength(0);
-		coords = new TextFragmentRef.ImplMut();
+		coords = new TextFragmentRefImplMut();
 		stage = Stage.INIT;
 		type = null;
 		lastRes = false;
