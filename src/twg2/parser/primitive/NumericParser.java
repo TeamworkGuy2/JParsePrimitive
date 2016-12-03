@@ -230,7 +230,7 @@ public class NumericParser implements CharParserMatchable {
 
 
 	@Override
-	public TextFragmentRef getCompleteMatchedTextCoords() {
+	public TextFragmentRef getMatchedTextCoords() {
 		return coords;
 	}
 

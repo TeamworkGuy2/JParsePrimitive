@@ -4,7 +4,13 @@ This project does its best to adhere to [Semantic Versioning](http://semver.org/
 
 
 --------
-###[0.1.5](N/A) - 2016-10-30
+###[0.2.0](N/A) - 2016-12-03
+#### Changed
+* Updated to latest jtext-parser version 0.11.0 (NumericParser.getCompleteMatchedTextCoords() -> getMatchedTextCoords())
+
+
+--------
+###[0.1.5](https://github.com/TeamworkGuy2/JParsePrimitive/commit/55b8ae6e92de7c1748d686cc70481ff49ac96094) - 2016-10-30
 #### Changed
 * Updated to latest jtext-parser version 0.10.0 (TextFragmentRef.ImplMut -> TextFragmentRefImplMut)
 * Added some example code to README
