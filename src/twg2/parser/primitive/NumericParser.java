@@ -1,9 +1,9 @@
 package twg2.parser.primitive;
 
 import twg2.arrays.ArrayUtil;
-import twg2.functions.BiPredicates;
-import twg2.functions.Predicates;
+import twg2.functions.predicates.CharPredicate;
 import twg2.parser.condition.text.CharParserMatchable;
+import twg2.parser.condition.text.CharParserPredicate;
 import twg2.parser.textFragment.TextFragmentRef;
 import twg2.parser.textFragment.TextFragmentRefImplMut;
 import twg2.parser.textParser.TextParser;
@@ -76,27 +76,27 @@ public class NumericParser implements CharParserMatchable {
 
 	public static final char floatPointChar = '.';
 	public static final char prefix1Of2 = '0';
-	public static final Predicates.Char isPrefix2Of2 = (c) -> (c == 'X' || c == 'x' || c == 'C' || c == 'c' || c == 'B' || c == 'b');
-	public static final Predicates.Char isSign = (c) -> (c == '-' || c == '+');
-	public static final Predicates.Char isFloatExponent = (c) -> (c == 'E' || c == 'e');
-	public static final Predicates.Char isFloatBinaryExponent = (c) -> (c == 'P' || c == 'p');
-	public static final Predicates.Char isFloatSuffix = (c) -> (c == 'F' || c == 'f' || c == 'D' || c == 'd');
-	public static final Predicates.Char isIntSuffix = (c) -> (c == 'L' || c == 'l');
+	public static final CharPredicate isPrefix2Of2 = (c) -> (c == 'X' || c == 'x' || c == 'C' || c == 'c' || c == 'B' || c == 'b');
+	public static final CharPredicate isSign = (c) -> (c == '-' || c == '+');
+	public static final CharPredicate isFloatExponent = (c) -> (c == 'E' || c == 'e');
+	public static final CharPredicate isFloatBinaryExponent = (c) -> (c == 'P' || c == 'p');
+	public static final CharPredicate isFloatSuffix = (c) -> (c == 'F' || c == 'f' || c == 'D' || c == 'd');
+	public static final CharPredicate isIntSuffix = (c) -> (c == 'L' || c == 'l');
 
-	public static final Predicates.Char isHex = (c) -> (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
-	public static final Predicates.Char isHexOrOptionalChar = (c) -> (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f') || c == allowedHexChar;
-	public static final Predicates.Char isHexPrefix = (c) -> (c == 'X' || c == 'x');
+	public static final CharPredicate isHex = (c) -> (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
+	public static final CharPredicate isHexOrOptionalChar = (c) -> (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f') || c == allowedHexChar;
+	public static final CharPredicate isHexPrefix = (c) -> (c == 'X' || c == 'x');
 
-	public static final Predicates.Char isDigit = (c) -> (c >= '0' && c <= '9');
-	public static final Predicates.Char isDigitOrOptionalChar = (c) -> (c >= '0' && c <= '9') || c == allowedDigitChar;
+	public static final CharPredicate isDigit = (c) -> (c >= '0' && c <= '9');
+	public static final CharPredicate isDigitOrOptionalChar = (c) -> (c >= '0' && c <= '9') || c == allowedDigitChar;
 
-	public static final Predicates.Char isOctal = ((c) -> (c >= '0' && c <= '7'));
-	public static final Predicates.Char isOctalOrOptionalChar = ((c) -> (c >= '0' && c <= '7') || c == allowedOctalChar);
-	public static final Predicates.Char isOctalPrefix = (c) -> (c == 'C' || c == 'c');
+	public static final CharPredicate isOctal = ((c) -> (c >= '0' && c <= '7'));
+	public static final CharPredicate isOctalOrOptionalChar = ((c) -> (c >= '0' && c <= '7') || c == allowedOctalChar);
+	public static final CharPredicate isOctalPrefix = (c) -> (c == 'C' || c == 'c');
 
-	public static final Predicates.Char isBinary = (c) -> (c == '0' || c == '1');
-	public static final Predicates.Char isBinaryOrOptionalChar = (c) -> (c == '0' || c == '1') || c == allowedBinaryChar;
-	public static final Predicates.Char isBinaryPrefix = (c) -> (c == 'B' || c == 'b');
+	public static final CharPredicate isBinary = (c) -> (c == '0' || c == '1');
+	public static final CharPredicate isBinaryOrOptionalChar = (c) -> (c == '0' || c == '1') || c == allowedBinaryChar;
+	public static final CharPredicate isBinaryPrefix = (c) -> (c == 'B' || c == 'b');
 
 	protected static final char[] suffixes = { 'X', 'x', 'C', 'c', 'B', 'b' };
 	protected static final char firstDigit = '0';
@@ -130,7 +130,7 @@ public class NumericParser implements CharParserMatchable {
 	char sign;
 	StringBuilder dstBuf = new StringBuilder();
 	TextFragmentRefImplMut coords = new TextFragmentRefImplMut();
-	BiPredicates.CharObject<TextParser> firstCharMatcher = (char ch, TextParser buf) -> {
+	CharParserPredicate firstCharMatcher = (char ch, TextParser buf) -> {
 		return ch >= firstValidChar && ch <= lastValidChar;
 	};
 	String name;
@@ -219,7 +219,7 @@ public class NumericParser implements CharParserMatchable {
 
 
 	@Override
-	public BiPredicates.CharObject<TextParser> getFirstCharMatcher() {
+	public CharParserPredicate getFirstCharMatcher() {
 		return firstCharMatcher;
 	}
 
