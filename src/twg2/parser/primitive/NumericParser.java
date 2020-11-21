@@ -128,7 +128,6 @@ public class NumericParser implements CharParserMatchable {
 	protected NumericType type;
 
 	char sign;
-	StringBuilder dstBuf = new StringBuilder();
 	TextFragmentRefImplMut coords = new TextFragmentRefImplMut();
 	CharParserPredicate firstCharMatcher = (char ch, TextParser buf) -> {
 		return ch >= firstValidChar && ch <= lastValidChar;
@@ -177,7 +176,6 @@ public class NumericParser implements CharParserMatchable {
 			if(res) {
 				matchCount++;
 				lastChar = ch;
-				dstBuf.append(ch);
 				coords.setStart(buf);
 				coords.setEnd(buf);
 			}
@@ -198,7 +196,6 @@ public class NumericParser implements CharParserMatchable {
 		if(res) {
 			matchCount++;
 			lastChar = nextCh;
-			dstBuf.append(nextCh);
 			coords.setEnd(buf);
 		}
 		buf.unread(1);
@@ -224,6 +221,12 @@ public class NumericParser implements CharParserMatchable {
 	}
 
 
+	@Override
+	public char[] getFirstChars() {
+		return null; // skip 10 match chars since it's probably not fast to search array of 10 values vs char predicate with an upper and lower bounds check
+	}
+
+
 	public NumericType getNumericType() {
 		return this.type;
 	}
@@ -232,18 +235,6 @@ public class NumericParser implements CharParserMatchable {
 	@Override
 	public TextFragmentRef getMatchedTextCoords() {
 		return coords;
-	}
-
-
-	@Override
-	public StringBuilder getParserDestination() {
-		return dstBuf;
-	}
-
-
-	@Override
-	public void setParserDestination(StringBuilder parserDestination) {
-		this.dstBuf = parserDestination;
 	}
 
 
@@ -273,7 +264,6 @@ public class NumericParser implements CharParserMatchable {
 		matchCount = 0;
 		lastChar = 0;
 		sign = 0;
-		dstBuf.setLength(0);
 		coords = new TextFragmentRefImplMut();
 		stage = Stage.INIT;
 		type = null;

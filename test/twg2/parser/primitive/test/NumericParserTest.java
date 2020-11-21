@@ -101,6 +101,21 @@ public class NumericParserTest {
 	}
 
 
+	@Test
+	public void parseOctals() {
+		String[] inputs1 = {  "0c0", "0c2", "0c372", "0c1556", "0c1234567" };
+		Integer[] expects1 = { 0_0,   0_2,   0_372,   0_1556,   0_1234567 };
+
+		testParse(inputs1, expects1, (s, i) -> Integer.parseInt(s, 8), 8, NumericType.OCTAL_INT, false);
+
+		String[] inputs2 = {  "-0c0", "-0c2", "+0c372", "-0c1556", "0c123" };
+		Integer[] expects2 = { -0_0,   -0_2,   +0_372,   -0_1556,  0_123 };
+
+		testParse(inputs2, expects2, (s, i) -> Integer.parseInt(s, 8), 8, NumericType.OCTAL_INT, true);
+	}
+
+
+
 	private static <T extends Number> void testParse(String[] srcs, T[] expects, BiFunction<String, Integer, T> parse, int radix, NumericType type, boolean parseSign) {
 		testParse(srcs, expects, parse, radix, type, parseSign, TextIteratorParser::of);
 		testParse(srcs, expects, parse, radix, type, parseSign, TextCharsParser::of);
@@ -124,7 +139,7 @@ public class NumericParserTest {
 
 			Assert.assertFalse("numeric parse failed: " + src, n.isFailed());
 			Assert.assertEquals("source: " + src, type, n.getNumericType());
-			String parsedStr = n.getParserDestination().toString();
+			String parsedStr = n.getMatchedTextCoords().getText(src).toString();
 			String expectStr = trimSuffix(parsedStr, radix);
 			Assert.assertEquals(parsedStr, src);
 

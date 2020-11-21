@@ -4,7 +4,17 @@ This project does its best to adhere to [Semantic Versioning](http://semver.org/
 
 
 --------
-### [0.2.1](N/A) - 2017-08-20
+### [0.3.0](N/A) - 2020-11-21
+#### Changed
+* Added `NumericParser.getFirstChars()` to match jtext-parser version 0.17.0
+* Improve unit tests
+
+#### Removed
+* `NumericParser.getParserDestination()` and `setParserDestination()`
+
+
+--------
+### [0.2.1](https://github.com/TeamworkGuy2/JParsePrimitive/commit/443428c474a71501f85e87de9eb5eb4650e4f0e5) - 2017-08-20
 #### Changed
 * Updated dependency jfunc@0.3.0 (`Predicates.Char` -> `CharPredicate`)
 
@@ -50,5 +60,5 @@ This project does its best to adhere to [Semantic Versioning](http://semver.org/
 --------
 ### [0.1.0](https://github.com/TeamworkGuy2/JParsePrimitive/commit/c551ac5c5ecef328f228ac945b53b831fd55b47f) - 2016-09-01
 #### Added
-Includes primitive (boolean, int, float) parsing code from [JParserDataTypeLike](https://github.com/TeamworkGuy2/JParserDataTypeLike) which came from [JLikelyParser] (https://github.com/TeamworkGuy2/JLikelyParser) library:
+Includes primitive (boolean, int, float) parsing code from [JParserDataTypeLike](https://github.com/TeamworkGuy2/JParserDataTypeLike) which came from the JLikelyParser library:
 * `twg2.parser.primitive.NumericParser` - for parsing Java numeric literals (binary, octal, decimal, hex, float, and hex-float) from text input streams
